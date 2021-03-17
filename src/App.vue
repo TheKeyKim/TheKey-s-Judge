@@ -1,12 +1,21 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <NavMenu></NavMenu>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+import NavMenu from "./components/NavMenu.vue";
+
+export default{
+  components : {
+    NavMenu
+  }
+}
+</script>
 
 <style>
 #app {
@@ -18,7 +27,9 @@
 }
 
 #nav {
-  padding: 30px;
+  flex:direction;
+  justify-content: center;
+  padding : 15px;
 }
 
 #nav a {
