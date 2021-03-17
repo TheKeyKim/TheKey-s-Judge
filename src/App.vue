@@ -4,15 +4,17 @@
       <NavMenu></NavMenu>
     </div>
     <router-view/>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import NavMenu from "./components/NavMenu.vue";
-
+import Footer from "./components/Footer.vue";
 export default{
   components : {
-    NavMenu
+    NavMenu,
+    Footer
   }
 }
 </script>
@@ -29,7 +31,6 @@ export default{
 #nav {
   flex:direction;
   justify-content: center;
-  padding : 15px;
 }
 
 #nav a {

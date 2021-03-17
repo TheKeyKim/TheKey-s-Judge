@@ -5,8 +5,8 @@
             |
             <div @click="$router.push('/login')">로그인</div>
         </div>
-        <div>
-            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+        <div class="nav-wrapper-prime">
+            <el-menu :default-active="activeIndex" class="el-menu-demo nav" mode="horizontal" @select="handleSelect"
             text-color=#687674
             active-text-color=#0076C0
             >
@@ -15,7 +15,7 @@
                     <img class="logo" src="../assets/logo.png">
                 </a>
             </el-menu-item>
-            <el-menu-item id="problemset" index="2" @click="$router.push('/problemset')">
+            <el-menu-item class="nav-menu" id="problemset" index="2" @click="$router.push('/problemset')">
                 문제집
             </el-menu-item>
             </el-menu>
@@ -40,6 +40,19 @@ export default {
 </script>
 
 <style>
+.nav-wrapper-prime{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-bottom:1px solid #eee;
+    padding-top:15px;
+}
+.nav{
+    width : 1170px;
+    margin-left : auto;
+    margin-right : auto;
+    border-bottom:1px solid transparent;
+}
 .logo {
     height: 60px;
 }
@@ -63,9 +76,13 @@ export default {
 .topbar div {
     padding:0px 10px 0px 10px;
     cursor:pointer;
-    
 }
 .topbar div:hover{
     text-decoration:underline;
+}
+@media(max-width:700px){
+    .topbar{
+        margin-right: 10px;
+    }
 }
 </style>
