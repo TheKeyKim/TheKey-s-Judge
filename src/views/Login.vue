@@ -8,7 +8,7 @@
     <div class="content-wrapper">
       <div class="login-box-wrapper">
         <div class="login-box">
-          <form class="login-form">
+          <form class="login-form" :model="form" onsubmit="return false;">
             <div class="login-header">
               <h2 class="h2-login">로그인</h2>
             </div>
@@ -16,21 +16,24 @@
               <div class="input-image">
                 <img src="../assets/id.png">
               </div>
-              <input type="text" class="input-string" placeholder="아이디">
+              <input v-model="form.user_id" type="text" class="input-string" placeholder="아이디">
             </div>
             <div class="input-style">
               <div class="input-image">
                 <img src="../assets/password.png">
               </div>
-              <input type="password" class="input-string" placeholder="비밀번호">
+              <input v-model="form.password"  type="password" class="input-string" placeholder="비밀번호">
             </div>
             <div class="row">
               <div class="chk">
                 <input type="checkbox"> 로그인 상태 유지
               </div>
-              <button type="submit" class="btn_login">로그인</button>
+              <button @click="login" type="submit" class="btn_login">로그인</button>
             </div>
             <div class="login-footer">
+              <div v-if="status" class="footer-content" style="color:#E74C3C;">
+                {{status}}
+              </div>
               <div class="footer-content">
                 회원 가입은 <a @click="$router.push('/signin')">여기</a>에서 할 수 있습니다.
               </div>
@@ -44,9 +47,52 @@
 
 <script>
 // @ is an alias to /src
+import {mapState, mapMutations} from "vuex"
+import router from "../router/index";
+import {userAPI} from "../utils/axios";
 
 export default {
-
+  data(){
+    return{
+      status : "",
+      form : {
+        "user_id" : "",
+        "password" : ""
+      }
+    }
+  },
+  computed: {
+    ...mapState(["user"])
+  },
+  methods:{
+    ...mapMutations(["SET_USER"]), 
+    async login() {
+      const {user_id, password} = this.form;
+      console.log(user_id, password)
+      console.log(password);
+      if(!user_id || !password){
+        this.status = "아이디 / 이메일 또는 비밀번호가 잘못되었습니다."
+      }
+      else{
+        const result = await userAPI.login(user_id, password);
+        console.log(result);
+        if(result.data.status == "ERROR"){
+          this.status = "아이디 / 이메일 또는 비밀번호가 잘못되었습니다.";
+          this.form.user_id = "";
+          this.form.password = "";
+        }
+        else{
+          localStorage.setItem("token", result.data.token);
+          this.SET_USER({ id: result.data.id, name: result.data.name });
+          router.push("/");
+        }
+      }
+    }
+  },
+  mounted(){
+    if(this.user.name) router.push("/");
+    console.log(this.user);
+  }
 }
 </script>
 

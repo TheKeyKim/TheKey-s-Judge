@@ -1,6 +1,13 @@
 <template>
     <div class="nav-wrapper">
-        <div class="topbar">
+        <div v-if="user.name" class="topbar">
+            <div>{{user.name}}</div>
+            |
+            <div @click="$router.push('/')">설정</div>
+            |
+            <div @click="SET_LOGOUT">로그아웃</div>
+        </div>
+        <div v-else class="topbar">
             <div @click="$router.push('/signin')">회원가입</div>
             |
             <div @click="$router.push('/login')">로그인</div>
@@ -34,7 +41,7 @@ export default {
         ...mapState(["user"]),
     },
     methods : {
-
+        ...mapMutations(["SET_LOGOUT"])
     }
 }
 </script>
