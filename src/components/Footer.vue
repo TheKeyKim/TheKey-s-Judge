@@ -13,10 +13,8 @@ export default {
 
 <style>
 .footer{
-    position: absolute;
     bottom : 0;
     background-color : #252525;
-    width : 100%;
     left : 0;
     color : white;
     height : min(150px);

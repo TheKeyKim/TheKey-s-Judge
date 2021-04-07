@@ -3,7 +3,7 @@
     <div id="nav">
       <NavMenu></NavMenu>
     </div>
-    <router-view/>
+    <router-view class="view" />
     <Footer></Footer>
   </div>
 </template>
@@ -40,5 +40,9 @@ export default{
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.view{
+  min-height: 80vh;
 }
 </style>

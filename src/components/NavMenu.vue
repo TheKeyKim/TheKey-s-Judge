@@ -74,6 +74,7 @@ export default {
 .topbar{
     position: absolute;
     z-index : 8;
+    top : 10px;
     right : 15px;
     margin-right: 132px;
     color : #7c8082;
