@@ -1,4 +1,18 @@
-# frontend
+# TheKey's Judge Front by vue.js
+
+## Index
+[Introduce](#Introduce) <br>
+[Home](#Home) <br>
+[Login](#Login)
+
+## Introduce
+백준 온라인 저지의 클론 사이트이며, 학습을 목적으로 제작되었습니다. 대부분의 asset은 BOJ사이트의 것을 사용하였습니다. 
+
+## Home
+<img src="./imgs/home.png">
+
+## Login
+<img src="./imgs/login.png">
 
 ## Project setup
 ```
