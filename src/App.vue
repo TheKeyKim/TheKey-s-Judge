@@ -15,6 +15,9 @@ export default{
   components : {
     NavMenu,
     Footer
+  },
+  beforeMount(){
+    document.title = "TheKey's Judge"
   }
 }
 </script>
