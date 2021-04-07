@@ -1,4 +1,4 @@
 module.exports = {
     outputDir : './docs',
-    publicPath : '/thekeys-judge'
+    publicPath : '/TheKeys-Judge'
 }
