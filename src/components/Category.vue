@@ -3,6 +3,7 @@
       <ul class="classifier">
         <li v-for="m in menu" :key="m.id" >
             <a @click="$router.push(m.url)" :class="{isActive : m.active}">
+            <!-- <a :href="m.url" :class="{isActive : m.active}"> -->
             {{m.name}}
             </a>  
         </li>

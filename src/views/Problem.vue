@@ -74,7 +74,7 @@
                 <h2>출처</h2>
             </div>
             <div class="description">
-              <a :href="problem/reference">{{ problem.reference }} </a> 
+              <a :href="problem.reference">{{ problem.reference }} </a> 
             </div>
         </div>
         <div class="problem-reference"></div>
@@ -123,6 +123,7 @@ export default {
         console.log(result);
         this.problem = result;
         this.menu[0].name = result.id+"번";
+        this.menu[1].url = "/submit/"+String(this.problem.id);
     }
 }
 </script>
