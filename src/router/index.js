@@ -6,6 +6,7 @@ import Problem from '../views/Problem.vue'
 import Submit from '../views/Submit.vue'
 import Login from '../views/Login.vue'
 import Signin from '../views/Signin.vue'
+import Mysubmit from '../views/Mysubmit.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/submit/:id',
     name: 'Submit',
     component: Submit
+  },
+  {
+    path: '/mysubmit/:id',
+    name: 'Mysubmit',
+    component: Mysubmit
   }
 ]
 

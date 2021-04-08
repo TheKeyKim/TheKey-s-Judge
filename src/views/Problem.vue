@@ -124,6 +124,7 @@ export default {
         this.problem = result;
         this.menu[0].name = result.id+"번";
         this.menu[1].url = "/submit/"+String(this.problem.id);
+        this.menu[2].url = "/mysubmit/"+String(this.problem.id);
     }
 }
 </script>

@@ -7,14 +7,14 @@
             {{problem.title}}
             </span>
         </div>
-        <form action method="post">
+        <form >
             <input type="hidden" :value="problem.id" name="problem_id"/>
             <div class="form-group">
                 <label class="submit-label">
                     언어
                 </label>
                 <div class="submit-content">
-                    <select id="language" name="language" data-placeholder="언어를 선택해 주세요" class="language-select" data-no_results_text="없는 언어 입니다">
+                    <select v-model="form.language" id="language" name="language" data-placeholder="언어를 선택해 주세요" class="language-select" data-no_results_text="없는 언어 입니다">
                         <option value="0"> C++ </option>
                         <option value="1"> JAVA </option>
                         <option value="2"> Python </option>
@@ -31,7 +31,7 @@
                     type="textarea"
                     :autosize="{ minRows: 20, maxRows: 30}"
                     placeholder="Code here"
-                    v-model="code">
+                    v-model="form.code">
                     </el-input>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <label class="submit-label">
                 </label>
                 <div class="submit-content">
-                <button type="submit" class="btn_login" style="cursor:pointer">제출</button>
+                <button @click="submit_code" class="btn_login" style="cursor:pointer">제출</button>
                 </div>
             </div>
         </form>
@@ -49,6 +49,7 @@
 
 <script>
 import Category from "../components/Category";
+import router from "../router/index";
 
 export default {
     components : {
@@ -56,7 +57,12 @@ export default {
     },
     data(){
         return {
-            code : "",
+            form : {
+                code : "",
+                language : "0",
+                problem_id : "",
+                user_id : ""
+            },
             problem :{
 
             },
@@ -83,13 +89,23 @@ export default {
             ]
         };
     },
+  methods:{
+    async submit_code() {
+      //const {user_id, password} = this.form;
+       //todo getting login information and do submit
+       this.form.problem_id = this.id;
+        console.log(this.form);
+      router.push("/mysubmit/"+String(this.id));    
+    }
+    },
     mounted(){
         this.id = this.$route.params.id;
         var result = require('../problems/'+this.id+'.json');
         this.problem = result;
         this.menu[0].name = result.id+"번";
         this.menu[0].url = "/problem/" + String(this.problem.id);
-        console.log(this.menu);
+        this.menu[1].url = "/submit/"+String(this.problem.id);
+        this.menu[2].url = "/mysubmit/"+String(this.problem.id);
     }
 }
 </script>
