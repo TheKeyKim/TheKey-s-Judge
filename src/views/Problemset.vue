@@ -72,7 +72,7 @@ export default {
           {
             data:'A+B',
             type:'l',
-            url:'',
+            url:'./problem/1000',
           },
           {
             data:[],
@@ -104,7 +104,7 @@ export default {
           {
             data:'A-B',
             type:'l',
-            url:'',
+            url:'./problem/1001',
           },
           {
             data:[],

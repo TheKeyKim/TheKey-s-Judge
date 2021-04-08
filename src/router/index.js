@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Problemset from '../views/Problemset.vue'
+import Problem from '../views/Problem.vue'
 import Login from '../views/Login.vue'
 import Signin from '../views/Signin.vue'
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/signin',
     name: 'Signin',
     component: Signin
+  },
+  {
+    path: '/problem/:id',
+    name: 'Problem',
+    component: Problem
   }
 ]
 
