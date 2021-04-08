@@ -52,12 +52,11 @@ export default {
         ...mapMutations(["SET_LOGOUT"])
     },
     mounted(){
-        var link = document.location.href; console.log(link);
+        var link = document.location.href; 
         for(var i = 0; i < this.menus.length; i++){
             var tmp = this.menus[i].url;
             if(link.indexOf(tmp) != -1){
                 this.menus[i].active = true;
-                console.log(this.menus[i].active);
             }else{
                 this.menus[i].active = false;
             }

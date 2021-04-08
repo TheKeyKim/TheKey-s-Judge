@@ -30,7 +30,7 @@ export default {
   padding-inline-start: 40px;
 }
 .isActive{
-    background-color : #428bca;
+    background-color : #428bca !important;
     color : white !important;
 }
 .classifier > li > a {
@@ -38,5 +38,10 @@ export default {
   padding : 10px 15px 10px 15px;
   font-size : 14px;
   color : black;
+  cursor: pointer;
+}
+.classifier > li > a:hover{
+    background-color : rgb(241, 241, 241);
+    color : #428bca;
 }
 </style>
