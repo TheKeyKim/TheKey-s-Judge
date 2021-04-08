@@ -28,14 +28,14 @@
               <div class="chk">
                 <input type="checkbox"> 로그인 상태 유지
               </div>
-              <button @click="login" type="submit" class="btn_login">로그인</button>
+              <button @click="login" type="submit" class="btn_login" style="cursor:pointer">로그인</button>
             </div>
             <div class="login-footer">
               <div v-if="status" class="footer-content" style="color:#E74C3C;">
                 {{status}}
               </div>
               <div class="footer-content">
-                회원 가입은 <a @click="$router.push('/signin')">여기</a>에서 할 수 있습니다.
+                회원 가입은 <a @click="$router.push('/signin')" style="cursor:pointer">여기</a>에서 할 수 있습니다.
               </div>
             </div>
           </form>

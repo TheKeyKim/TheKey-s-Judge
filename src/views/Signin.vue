@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    Signin
+  <div class="problem-container">
+    준비 중입니다.
   </div>
 </template>
 

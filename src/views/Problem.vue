@@ -174,4 +174,14 @@ export default {
     text-decoration : none;
     color: #0076C0;
 }
+@media(max-width: 970px){
+    .problem-example{
+        display: flex;
+        flex-direction: column;
+    }
+    .problem-example > div{
+        width:70%;
+        padding-right : 15px;
+    }
+}
 </style>
