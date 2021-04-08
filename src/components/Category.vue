@@ -1,5 +1,5 @@
 !<template>
-    <div>
+    <div class="category">
       <ul class="classifier">
         <li v-for="m in menu" :key="m.id" >
             <a @click="$router.push(m.url)" :class="{isActive : m.active}">
@@ -18,16 +18,17 @@ export default {
 </script>
 
 <style>
+.category{
+    position: relative;
+    min-height: 1px;
+    /* padding-right: 15px;
+    padding-left: 15px; */
+}
 .classifier{
   margin-top:20px;
-  width: 83.3333%;
   display: flex;
   list-style : none;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
+  padding-left: 0px;
 }
 .isActive{
     background-color : #428bca !important;
