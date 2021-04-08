@@ -144,7 +144,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 83.3333%;
-  padding : 40px 15px 40px 15px;
+  padding : 40px 15px 70px 15px;
 }
 @media(min-width: 768px){
   .problem-container{
@@ -158,7 +158,7 @@ export default {
 }
 @media(min-width: 1200px){
   .problem-container{
-    width: 1170px;
+    width: 1070px;
   }
 }
 </style>

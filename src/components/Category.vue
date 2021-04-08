@@ -33,6 +33,7 @@ export default {
 .isActive{
     background-color : #428bca !important;
     color : white !important;
+    font-weight : bold !important;
 }
 .classifier > li > a {
   text-decoration : none;

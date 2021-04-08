@@ -30,6 +30,13 @@ export default{
   text-align: center;
   color: #2c3e50;
 }
+h1, h2, h3, h4, h5, h6 {
+    color: #585f69;
+    margin-top: 5px;
+    text-shadow: none;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+}
 
 #nav {
   flex:direction;
