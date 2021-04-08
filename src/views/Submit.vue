@@ -27,9 +27,10 @@
                 </label>
                 <div class="submit-content">
                     <el-input
+                    onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}"
                     type="textarea"
-
-                    placeholder="code here"
+                    :autosize="{ minRows: 20, maxRows: 30}"
+                    placeholder="Code here"
                     v-model="code">
                     </el-input>
                 </div>
