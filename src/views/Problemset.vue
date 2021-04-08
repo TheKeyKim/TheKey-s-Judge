@@ -1,26 +1,42 @@
 <template>
   <div>
     <div class="problem-container">
-    <ul class="classifier">
-      <li>문제</li>
-    </ul>
-
+      <Category :menu="menu"></Category>
     </div>
   </div>
 </template>
 
 <script>
 import {userAPI} from "../utils/axios";
+import Category from "../components/Category.vue";
 export default {
+  components : {
+    Category
+  },
   data(){
     return {
       name : "",
       login_id : "",
       password : "",
       email : "",
+      menu : [
+        {
+          id : 0,
+          name : '전체',
+          url : "./problemset",
+          active : true
+        },
+        {
+          id : 1,
+          name : '문제집',
+          url : "./problemset",
+          active : false
+        }
+      ],
     }
   },
   methods:{
+    
   },
   async mounted(){
 
@@ -29,11 +45,6 @@ export default {
 </script>
 
 <style>
-.classifier{
-  margin-top:20px;
-  width: 83.3333%;
-}
-
 .problem-container{
   margin-left: auto;
   margin-right: auto;

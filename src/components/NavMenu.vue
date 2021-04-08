@@ -35,13 +35,33 @@ import { mapMutations, mapState } from "vuex";
 
 export default {
     data(){
-        return {};
+        return {
+            menus : [
+                {
+                    name : '문제집',
+                    url : '/problemset',
+                    active : false
+                }
+            ]
+        };
     },
     computed: {
         ...mapState(["user"]),
     },
     methods : {
         ...mapMutations(["SET_LOGOUT"])
+    },
+    mounted(){
+        var link = document.location.href; console.log(link);
+        for(var i = 0; i < this.menus.length; i++){
+            var tmp = this.menus[i].url;
+            if(link.indexOf(tmp) != -1){
+                this.menus[i].active = true;
+                console.log(this.menus[i].active);
+            }else{
+                this.menus[i].active = false;
+            }
+        }
     }
 }
 </script>
@@ -87,6 +107,10 @@ export default {
 }
 .topbar div:hover{
     text-decoration:underline;
+}
+.navActive{
+    color: rgb(0, 118, 192) !important; 
+    border-bottom-color: rgb(0, 118, 192) !important;
 }
 @media(max-width:700px){
     .topbar{
