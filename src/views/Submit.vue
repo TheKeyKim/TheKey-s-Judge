@@ -7,7 +7,7 @@
             {{problem.title}}
             </span>
         </div>
-        <form >
+        <div >
             <input type="hidden" :value="problem.id" name="problem_id"/>
             <div class="form-group">
                 <label class="submit-label">
@@ -39,10 +39,10 @@
                 <label class="submit-label">
                 </label>
                 <div class="submit-content">
-                <button @click="submit_code" class="btn_login" style="cursor:pointer">제출</button>
+                <button @click="submit_code" type="submit" class="btn_login" style="cursor:pointer">제출</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
   </div>
 </template>
@@ -50,6 +50,7 @@
 <script>
 import Category from "../components/Category";
 import router from "../router/index";
+import { problemAPI } from "../utils/axios";
 
 export default {
     components : {
@@ -61,7 +62,7 @@ export default {
                 code : "",
                 language : "0",
                 problem_id : "",
-                user_id : ""
+                submit_id : ""
             },
             problem :{
 
@@ -91,10 +92,13 @@ export default {
     },
   methods:{
     async submit_code() {
-      //const {user_id, password} = this.form;
+      const {user_id, password} = this.form;
        //todo getting login information and do submit
        this.form.problem_id = this.id;
-        console.log(this.form);
+       this.form.submit_id = 0;
+       const {submit_id, problem_id, language, code} = this.form;
+       console.log(submit_id, problem_id, language, code)
+       const result = await problemAPI.submit(1000, problem_id, language, code);
       router.push("/mysubmit/"+String(this.id));    
     }
     },

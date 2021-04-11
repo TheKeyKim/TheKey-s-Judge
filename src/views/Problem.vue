@@ -84,6 +84,7 @@
 
 <script>
 import Category from "../components/Category";
+import { problemAPI } from "../utils/axios";
 
 export default {
     components : {

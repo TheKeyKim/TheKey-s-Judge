@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {userAPI} from "../utils/axios";
+import {userAPI, problemAPI} from "../utils/axios";
 import Category from "../components/Category.vue";
 import Table from "../components/Table.vue";
 export default {
