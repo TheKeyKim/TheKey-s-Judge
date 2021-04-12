@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const request = axios.create({
-    baseURL : "http://localhost:8000/api"
+    // baseURL : "http://localhost:8000/api"
+    baseURL : "http://thekeykim.xn--hk3b17f.xn--3e0b707e:8000/api"
 })
 
 export const userAPI = {
