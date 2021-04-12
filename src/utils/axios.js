@@ -2,7 +2,7 @@ import axios from "axios";
 
 const request = axios.create({
     // baseURL : "http://localhost:8000/api"
-    baseURL : "http://192.168.200.110:8000/api"
+    baseURL : "http://14.138.173.146:8000/api"
 })
 
 export const userAPI = {
