@@ -27,6 +27,7 @@
                 </label>
                 <div class="submit-content">
                     <el-input
+                    spellcheck = "false" 
                     onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}"
                     type="textarea"
                     :autosize="{ minRows: 20, maxRows: 30}"
@@ -96,8 +97,9 @@ export default {
        //todo getting login information and do submit
        this.form.problem_id = this.id;
        this.form.submit_id = 0;
-       const {submit_id, problem_id, language, code} = this.form;
-       console.log(submit_id, problem_id, language, code)
+       var {submit_id, problem_id, language, code} = this.form;
+       code = code.replace(/\\/g, "\\\\\\");
+       code = code.replace(/"/g, "\\\"");
        const result = await problemAPI.submit(1000, problem_id, language, code);
       router.push("/mysubmit/"+String(this.id));    
     }
