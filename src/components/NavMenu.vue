@@ -13,7 +13,7 @@
             <div @click="$router.push('/login')">로그인</div>
         </div>
         <div class="nav-wrapper-prime">
-            <el-menu class="el-menu-demo nav" mode="horizontal" @select="handleSelect"
+            <el-menu class="el-menu-demo nav" mode="horizontal" 
             text-color=#687674
             active-text-color=#0076C0
             >
