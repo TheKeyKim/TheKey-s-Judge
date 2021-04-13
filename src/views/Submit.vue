@@ -93,15 +93,18 @@ export default {
     },
   methods:{
     async submit_code() {
-      const {user_id, password} = this.form;
-       //todo getting login information and do submit
-       this.form.problem_id = this.id;
-       this.form.submit_id = 0;
-       var {submit_id, problem_id, language, code} = this.form;
-       code = code.replace(/\\/g, "\\\\\\");
-       code = code.replace(/"/g, "\\\"");
-       const result = await problemAPI.submit(1000, problem_id, language, code);
-      router.push("/mysubmit/"+String(this.id));    
+        const {user_id, password} = this.form;
+        //todo getting login information and do submit
+        this.form.problem_id = this.id;
+        this.form.submit_id = 0;
+        var {problem_id, language, code} = this.form;
+        const {status, submit_id}= await problemAPI.submit_id(problem_id);
+        console.log(status, submit_id);
+        code = code.replace(/\\/g, "\\\\\\");
+        code = code.replace(/"/g, "\\\"");
+        const result = await problemAPI.submit(submit_id, problem_id, language, code);
+
+        router.push("/mysubmit/"+String(this.id));    
     }
     },
     mounted(){

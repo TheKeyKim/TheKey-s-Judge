@@ -64,5 +64,15 @@ export const problemAPI = {
                 'content-type': 'application/json',
             }
         });
+    },
+    submit_id : (problem_id) => {
+        return request.post(`/problem/submitid`, {
+            problem_id
+        }, {
+            headers : {
+                Authorization : localStorage.getItem("token"),
+                'content-type': 'application/json',
+            }
+        })
     }
 }
