@@ -98,6 +98,9 @@ export default {
     this.menu[0].url = "/problem/" + String(this.problem.id);
     this.menu[1].url = "/submit/"+String(this.problem.id);
     this.menu[2].url = "/mysubmit/"+String(this.problem.id);
+
+    const data = await problemAPI.status();
+    console.log(data);
   }
 }
 </script>

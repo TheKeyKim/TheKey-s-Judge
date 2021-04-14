@@ -52,9 +52,9 @@ export const solvedAPI = {
 }
 
 export const problemAPI = {
-    submit : (id, problem_id, language, code) => {
+    submit : (submit_id, problem_id, language, code) => {
         return request.post("/problem/submit", {
-            id,
+            submit_id : submit_id,
             problem_id ,
             language ,
             code
@@ -69,6 +69,14 @@ export const problemAPI = {
         return request.post(`/problem/submitid`, {
             problem_id
         }, {
+            headers : {
+                Authorization : localStorage.getItem("token"),
+                'content-type': 'application/json',
+            }
+        })
+    },
+    status : () => {
+        return request.get('/problem/status',  {
             headers : {
                 Authorization : localStorage.getItem("token"),
                 'content-type': 'application/json',

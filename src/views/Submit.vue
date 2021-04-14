@@ -98,7 +98,9 @@ export default {
         this.form.problem_id = this.id;
         this.form.submit_id = 0;
         var {problem_id, language, code} = this.form;
-        const {status, submit_id}= await problemAPI.submit_id(problem_id);
+        const ret = await problemAPI.submit_id(problem_id);
+        console.log(ret);
+        const {status, submit_id} = ret.data;
         console.log(status, submit_id);
         code = code.replace(/\\/g, "\\\\\\");
         code = code.replace(/"/g, "\\\"");
