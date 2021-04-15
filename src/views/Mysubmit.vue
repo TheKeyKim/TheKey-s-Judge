@@ -107,7 +107,7 @@ export default {
     this.menu[0].url = "/problem/" + String(this.problem.id);
     this.menu[1].url = "/submit/"+String(this.problem.id);
     this.menu[2].url = "/mysubmit/"+String(this.problem.id);
-
+    const status = ['대기 중', '채점 중', '맞았습니다!', '런타임 에러', '시간 초과', '틀렸습니다']
     const data = await problemAPI.status();
     console.log(data);
   }
