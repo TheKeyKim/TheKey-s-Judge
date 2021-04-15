@@ -44,12 +44,16 @@ export default {
       ],
       heads : [
         {
+          name : '제출번호',
+          width : '10%'
+        },
+        {
           name : '문제',
           width : '10%'
         },
         {
           name : '결과',
-          width : '50%'
+          width : '40%'
         },
         {
           name : '언어',
@@ -62,6 +66,11 @@ export default {
       ],
       contents : [
         [
+          {
+            data:1000,
+            type:'l',
+            url:'',
+          },
           {
             data:1000,
             type:'l',
