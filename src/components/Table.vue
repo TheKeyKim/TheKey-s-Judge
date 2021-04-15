@@ -6,9 +6,9 @@
                     <th class="tableContents" v-for='head in heads' :key='head.name' :style="{width:head.width}">{{head.name}}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> 
                 <tr v-for="p in column" :key='p.id'>
-                    <td class="tableContents" style="" v-for="c in p" :key='c'>
+                    <td class="tableContents" style="" v-for="c in p" :key='c.data'>
                         <div v-if="c.type == 'd'">
                             {{c.data}}
                         </div>

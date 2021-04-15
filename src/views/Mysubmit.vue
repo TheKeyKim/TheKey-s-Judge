@@ -11,6 +11,14 @@
 import {userAPI, problemAPI} from "../utils/axios";
 import Category from "../components/Category.vue";
 import Table from "../components/Table.vue";
+
+
+function parseDate(s){
+  var ret = ""
+  ret += s.substring(2, s.indexOf('T'))
+  return ret
+}
+
 export default {
   components : {
     Category,
@@ -96,7 +104,6 @@ export default {
     }
   },
   methods:{
-    
   },
   async mounted(){
     this.id = this.$route.params.id;
@@ -107,9 +114,42 @@ export default {
     this.menu[0].url = "/problem/" + String(this.problem.id);
     this.menu[1].url = "/submit/"+String(this.problem.id);
     this.menu[2].url = "/mysubmit/"+String(this.problem.id);
-    const status = ['대기 중', '채점 중', '맞았습니다!', '런타임 에러', '시간 초과', '틀렸습니다']
-    const data = await problemAPI.status();
-    console.log(data);
+    const stat = ['대기 중', '채점 중', '맞았습니다!', '런타임 에러', '시간 초과', '틀렸습니다']
+    const lang = ['C++', 'Java', 'Python3']
+    var data = await problemAPI.status();
+    data = data['data']['data']
+    const tmp = []
+    for(let i=0; i< data.length ; i++){
+      const {submit_id, problem_id, language, status, createdAt} = data[i];
+      tmp.push([
+          {
+            data:submit_id,
+            type:'l',
+            url:'',
+          },
+          {
+            data:problem_id,
+            type:'l',
+            url:'',
+          },
+          {
+            data:stat[status],
+            type:'l',
+            url:'',
+          },
+          {
+            data:lang[language],
+            type:'d',
+            url:'',
+          },
+          {
+            data: parseDate(createdAt),
+            type:'d',
+            url:'',
+          }
+      ]);
+    }
+    this.contents = tmp;
   }
 }
 </script>
