@@ -9,11 +9,13 @@
             <tbody> 
                 <tr v-for="p in column" :key='p.id'>
                     <td class="tableContents" style="" v-for="c in p" :key='c.data'>
+                        <div v-bind:style="{color:c.color}" v-bind:class="{ bolder : c.bolder }">
                         <div v-if="c.type == 'd'">
                             {{c.data}}
                         </div>
                         <div class="tablelink" v-if="c.type == 'l'" @click="$router.push(c.url)">
                             {{c.data}}
+                        </div>
                         </div>
                     </td>
                 </tr>
@@ -65,4 +67,5 @@ td{
     padding : 8px;
     text-align : left;
 }
+.bolder{font-weight:bold}
 </style>
