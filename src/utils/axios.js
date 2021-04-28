@@ -75,8 +75,8 @@ export const problemAPI = {
             }
         })
     },
-    status : () => {
-        return request.get('/problem/status',  {
+    status : (problem_id) => {
+        return request.get(`/problem/status/${problem_id}`,  {
             headers : {
                 Authorization : localStorage.getItem("token"),
                 'content-type': 'application/json',

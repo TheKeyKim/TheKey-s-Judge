@@ -114,9 +114,9 @@ export default {
     this.menu[0].url = "/problem/" + String(this.problem.id);
     this.menu[1].url = "/submit/"+String(this.problem.id);
     this.menu[2].url = "/mysubmit/"+String(this.problem.id);
-    const stat = ['대기 중', '채점 중', '맞았습니다!', '런타임 에러', '시간 초과', '틀렸습니다']
+    const stat = ['대기 중', '채점 중', '맞았습니다!', '런타임 에러', '시간 초과', '틀렸습니다', '컴파일 에러']
     const lang = ['C++', 'Java', 'Python3']
-    var data = await problemAPI.status();
+    var data = await problemAPI.status(this.problem.id);
     data = data['data']['data']
     const tmp = []
     for(let i=0; i< data.length ; i++){
