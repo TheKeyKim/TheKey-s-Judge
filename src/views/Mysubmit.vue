@@ -30,6 +30,7 @@ export default {
   },
   data(){
     return {
+      intervalid1:'',
       name : "",
       login_id : "",
       password : "",
@@ -108,7 +109,60 @@ export default {
       ]
     }
   },
+  beforeDestroy () {
+    clearInterval(this.intervalid1);
+  },
   methods:{
+    async update(){
+      const stat = ['대기 중', '채점 중', '맞았습니다!', '런타임 에러', '시간 초과', '틀렸습니다', '컴파일 에러']
+      const color_arr = ['#A49E9E', '#E67E22', '#009874', '#5F4B8B', '#FA2768', '#DD4124', '#0f4781']
+      const lang = ['C++', 'Java', 'Python3']
+      var data = await problemAPI.status(this.problem.id);
+      data = data['data']['data']
+      const tmp = []
+      for(let i=0; i< data.length ; i++){
+        const {submit_id, problem_id, language, status, createdAt} = data[i];
+        const color = color_arr[status];
+        var bolder = false;
+        if(status == 2) bolder = true;
+        tmp.push([
+            {
+              data:submit_id,
+              type:'l',
+              url:'',
+            },
+            {
+              data:problem_id,
+              type:'l',
+              url:'',
+            },
+            {
+              data:stat[status],
+              type:'d',
+              url:'',
+              color:color,
+              bolder:bolder
+            },
+            {
+              data:lang[language],
+              type:'d',
+              url:'',
+            },
+            {
+              data: parseDate(createdAt),
+              type:'d',
+              url:'',
+            }
+        ]);
+      }
+      this.contents = tmp;
+    },
+    todo : function(){
+      const self = this;
+      this.intervalid1 = setInterval(function(){
+        self.update();
+      }, 1000);
+    },
   },
   async mounted(){
     this.id = this.$route.params.id;
@@ -125,49 +179,9 @@ export default {
         router.push(this.menu[0].url);
         return 0;
     }
-
-    const stat = ['대기 중', '채점 중', '맞았습니다!', '런타임 에러', '시간 초과', '틀렸습니다', '컴파일 에러']
-    const color_arr = ['#A49E9E', '#E67E22', '#009874', '#5F4B8B', '#FA2768', '#DD4124', '#0f4781']
-    const lang = ['C++', 'Java', 'Python3']
-    var data = await problemAPI.status(this.problem.id);
-    data = data['data']['data']
-    const tmp = []
-    for(let i=0; i< data.length ; i++){
-      const {submit_id, problem_id, language, status, createdAt} = data[i];
-      const color = color_arr[status];
-      var bolder = false;
-      if(status == 2) bolder = true;
-      tmp.push([
-          {
-            data:submit_id,
-            type:'l',
-            url:'',
-          },
-          {
-            data:problem_id,
-            type:'l',
-            url:'',
-          },
-          {
-            data:stat[status],
-            type:'d',
-            url:'',
-            color:color,
-            bolder:bolder
-          },
-          {
-            data:lang[language],
-            type:'d',
-            url:'',
-          },
-          {
-            data: parseDate(createdAt),
-            type:'d',
-            url:'',
-          }
-      ]);
-    }
-    this.contents = tmp;
+    this.todo();
+  },
+  created(){
   }
 }
 </script>
