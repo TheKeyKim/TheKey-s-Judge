@@ -27,6 +27,12 @@ export const userAPI = {
                 "Content-Type": "multipart/form-data",
             },
         });
+    },
+    idDuplicate : (id) => {
+        return request.get(`/user/idDup/${id}`, null);
+    },
+    emailDuplicate : (email) => {
+        return request.get(`/user/emailDup/${email}`, null);
     }
 }
 
