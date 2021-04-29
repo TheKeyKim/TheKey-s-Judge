@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import {mapState, mapMutations} from "vuex"
 import Category from "../components/Category";
 import router from "../router/index";
 import { problemAPI } from "../utils/axios";
@@ -56,6 +57,9 @@ import { problemAPI } from "../utils/axios";
 export default {
     components : {
         Category
+    },
+    computed: {
+        ...mapState(["user"])
     },
     data(){
         return {
@@ -117,6 +121,11 @@ export default {
         this.menu[0].url = "/problem/" + String(this.problem.id);
         this.menu[1].url = "/submit/"+String(this.problem.id);
         this.menu[2].url = "/mysubmit/"+String(this.problem.id);
+
+        if( ! this.user.name){
+            alert("로그인이 필요합니다.")
+            router.push(this.menu[0].url);
+        }
     }
 }
 </script>

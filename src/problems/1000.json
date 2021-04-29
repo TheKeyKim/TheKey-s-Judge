@@ -15,8 +15,14 @@
     },
     "example" : [
         {
+            "index" : 0,
             "input" : "1 2",
             "output" : "3"
+        },
+        {
+            "index" : 1,
+            "input" : "5 7",
+            "output" : "12"
         }
     ],
     "hint" : "",

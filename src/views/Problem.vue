@@ -51,21 +51,21 @@
               <p>{{ problem.data.output }} </p> 
             </div>
         </div>
-        <div class="problem-example">
+        <div v-for="ex in problem.example" :key="ex.index" class="problem-example">
             <div class="ex-console">
                 <div class="headline">
-                    <h2>예제 입력 1</h2>
+                    <h2>예제 입력 {{ex.index+1}}</h2>
                 </div>
                 <div class="text-console">
-                    {{ problem.example[0].input}}
+                    {{ ex.input}}
                 </div>
             </div>
             <div class="ex-console">
                 <div class="headline">
-                    <h2>예제 출력 1</h2>
+                    <h2>예제 출력 {{ex.index+1}}</h2>
                 </div>
                 <div class="text-console">
-                    {{ problem.example[0].output}}
+                    {{ ex.output}}
                 </div>
             </div>
         </div>
