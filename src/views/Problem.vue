@@ -125,6 +125,10 @@ export default {
             const problem = data.data.content;
             if(status == "OK"){
                 this.problem = problem;
+                console.log(problem.id);
+                this.menu[0].name = problem.id+"번";
+                this.menu[1].url = "/submit/"+String(this.problem.id);
+                this.menu[2].url = "/mysubmit/"+String(this.problem.id);
             }else {
                 var result = require('../problems/NFP.json');
                 this.problem = result;

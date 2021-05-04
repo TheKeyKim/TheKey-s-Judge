@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {userAPI} from "../utils/axios";
+import {userAPI, problemAPI} from "../utils/axios";
 import Category from "../components/Category.vue";
 import Table from "../components/Table.vue";
 export default {
@@ -94,17 +94,28 @@ export default {
             type:'d',
             url:'',
           }
-        ],
-        [
+        ]
+      ]
+    }
+  },
+  methods:{
+    async getProblemInfo(page){
+      const result = await problemAPI.problemList(page);
+      const arr = result.data.problemArray;
+      const status = result.data.status;
+      if(status == "OK"){
+        this.contents = []
+        for(let i=0; i<arr.length; i++){
+        var tmp = [
           {
-            data:1001,
+            data:arr[i]['problem_id'],
             type:'d',
             url:'',
           },
           {
-            data:'A-B',
+            data:arr[i]['name'],
             type:'l',
-            url:'./problem/1001',
+            url:`./problem/${arr[i]['problem_id']}`,
           },
           {
             data:[],
@@ -112,29 +123,28 @@ export default {
             url:'',
           },
           {
-            data:98995,
+            data:120424,
             type:'l',
             url:'',
           },
           {
-            data:162296,
+            data:389354,
             type:'l',
             url:'',
           },
           {
-            data:'72.037%',
+            data:'43.688%',
             type:'d',
             url:'',
           }
-        ],
-      ]
+          ]
+          this.contents.push(tmp)
+        }
+      }
     }
   },
-  methods:{
-    
-  },
   async mounted(){
-
+    this.getProblemInfo(0);
   }
 }
 </script>

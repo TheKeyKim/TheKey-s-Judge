@@ -91,5 +91,8 @@ export const problemAPI = {
     },
     problem : (problem_id) => {
         return request.get(`/problem/${problem_id}`, null);
+    },
+    problemList : (page) => {
+        return request.get(`/problem/list/${page}`, null);
     }
 }

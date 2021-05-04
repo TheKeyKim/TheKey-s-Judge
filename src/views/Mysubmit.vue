@@ -30,6 +30,7 @@ export default {
   },
   data(){
     return {
+      id:"",
       intervalid1:'',
       name : "",
       login_id : "",
@@ -117,7 +118,7 @@ export default {
       const stat = ['대기 중', '채점 중', '맞았습니다!', '런타임 에러', '시간 초과', '틀렸습니다', '컴파일 에러']
       const color_arr = ['#A49E9E', '#E67E22', '#009874', '#5F4B8B', '#FA2768', '#DD4124', '#0f4781']
       const lang = ['C++', 'Java', 'Python3']
-      var data = await problemAPI.status(this.problem.id);
+      var data = await problemAPI.status(this.id);
       data = data['data']['data']
       const tmp = []
       for(let i=0; i< data.length ; i++){
@@ -134,7 +135,7 @@ export default {
             {
               data:problem_id,
               type:'l',
-              url:'',
+              url:this.menu[0].url,
             },
             {
               data:stat[status],
@@ -166,13 +167,13 @@ export default {
   },
   async mounted(){
     this.id = this.$route.params.id;
-    var result = require('../problems/'+this.id+'.json');
-    this.problem = result;
-    this.menu[0].name = result.id+"번";
-    this.contents[0][0].url = "/problem/" + String(this.problem.id);
-    this.menu[0].url = "/problem/" + String(this.problem.id);
-    this.menu[1].url = "/submit/"+String(this.problem.id);
-    this.menu[2].url = "/mysubmit/"+String(this.problem.id);
+    const problem_id = this.id;
+    console.log(this.$route.params.id);
+    this.menu[0].name = problem_id+"번";
+
+    this.menu[0].url = "/problem/" + String(problem_id);
+    this.menu[1].url = "/submit/"+String(problem_id);
+    this.menu[2].url = "/mysubmit/"+String(problem_id);
 
     if( ! this.user.name){
         alert("로그인이 필요합니다.");

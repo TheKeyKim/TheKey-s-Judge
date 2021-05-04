@@ -115,12 +115,13 @@ export default {
     },
     mounted(){
         this.id = this.$route.params.id;
-        var result = require('../problems/'+this.id+'.json');
-        this.problem = result;
-        this.menu[0].name = result.id+"번";
-        this.menu[0].url = "/problem/" + String(this.problem.id);
-        this.menu[1].url = "/submit/"+String(this.problem.id);
-        this.menu[2].url = "/mysubmit/"+String(this.problem.id);
+        const problem_id = this.id;
+
+        this.menu[0].name = problem_id+"번";
+        console.log(this.menu[0].name);
+        this.menu[0].url = "/problem/" + String(problem_id);
+        this.menu[1].url = "/submit/"+String(problem_id);
+        this.menu[2].url = "/mysubmit/"+String(problem_id);
 
         if( ! this.user.name){
             alert("로그인이 필요합니다.")
