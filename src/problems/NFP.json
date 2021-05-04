@@ -1,0 +1,21 @@
+{
+    "id" : "1000",
+    "title" : "없는 문제입니다.",
+    "tags" : [],
+    "info" : {
+        "tl" : 0,
+        "ml" : 0,
+        "submit" : 0,
+        "answer" : 0
+    },
+    "data" : {
+        "contents" : "없는 문제입니다.",
+        "input" : "없는 인풋입니다.",
+        "output" : "없는 아웃풋입니다."
+    },
+    "example" : [
+    ],
+    "hint" : "",
+    "reference" : "",
+    "algorithm" : ""
+}

@@ -88,5 +88,8 @@ export const problemAPI = {
                 'content-type': 'application/json',
             }
         })
+    },
+    problem : (problem_id) => {
+        return request.get(`/problem/${problem_id}`, null);
     }
 }

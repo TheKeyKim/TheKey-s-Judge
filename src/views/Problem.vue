@@ -118,10 +118,23 @@ export default {
             ]
         };
     },
+    methods: {
+        async get_Info(problem_id){
+            var data = await problemAPI.problem(problem_id);
+            const status = data.data.status;
+            const problem = data.data.content;
+            if(status == "OK"){
+                this.problem = problem;
+            }else {
+                var result = require('../problems/NFP.json');
+                this.problem = result;
+            }
+        }
+    },
     mounted(){
         this.id = this.$route.params.id;
         var result = require('../problems/1000.json');
-        console.log(result);
+        this.get_Info(this.id);
         this.problem = result;
         this.menu[0].name = result.id+"번";
         this.menu[1].url = "/submit/"+String(this.problem.id);
